@@ -1,15 +1,15 @@
 # ⌛Calendar 📆📌
 ## View 🔍<br>
-***Light Mode 🌕***
+***Light Mode 🌕***<br>
 ![light MOde](light_calendar.jpg)
 <br>
-***Dark Mode 🌙***
+***Dark Mode 🌙*** <br>
 ![light MOde](dark_calendar.jpg)
 <br>
 
 ***Months***<br>
    <img width="695" alt="Capture d’écran 2022-10-18 121600" src="months.jpg"><br>
-***LOGO***<br>
+<br>
 
 [- 📫 How to reach me **Achchaima1@gmail.com**]()
 
