@@ -100,11 +100,3 @@ let curr_month ={value:currDate.getMonth()}
 let curr_year ={value:currDate.getFullYear()}
 generateCalendar(curr_month.value,curr_year.value)
 
-
-
-    // if (!month) month = currDate.getMonth()
-    // if (!year) year = currDate.getFullYear()
-
-    // let curr_month = `${month_names[month]}`
-    // month_picker.innerHTML = curr_month
-    // calendar_header_year.innerHTML = year
