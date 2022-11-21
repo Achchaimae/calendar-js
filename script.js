@@ -13,6 +13,9 @@ getFebDays=(year)=>{
 let calendar =document.querySelector('.calendar')
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 let month_picker=document.querySelector('#month-picker')
+month_picker.onclick= () =>{
+    month_list.classList.add('show')
+}
 //generate calendar
 generateCalendar = (month, year) => {
 
@@ -26,19 +29,78 @@ generateCalendar = (month, year) => {
 
     let currDate = new Date()
 
-    month_picker.innerHTML = curr_month
+    month_picker.innerHTML = month_names[month]
     calendar_header_year.innerHTML = year
+// get first day of month
 
-    let first_day=new Date(month,year,1)
 
-    for (let i = 0; i < days_of_month +first_day.getDay()-1; i++) {
-       let day=document.createElement('div')
-       if(i>first_day.getDay()){
-        day.classList.add('calendar-day-hover')
-        day.innerHTML =i
-       }
-        
+
+//lhma9 b 3aynih fe had lcode jazhguahgyah
+//     let first_day=new Date( year ,month  , 1)
+
+//     for (let i = 0; i <= days_of_month[month] +first_day.getDay()-1; i++) {
+//        let day=document.createElement('div')
+//        if(i>=first_day.getDay()){
+//             day.classList.add('calendar-day-hover')
+//             day.innerHTML = i - first_day.getDay() + 1
+//             day.innerHTML += `<span><\span>
+//                               <span><\span>
+//                               <span><\span>
+//                               <span><\span>`
+//             if(i - first_day.getDay()+1 ===currDate.getDate() && year===currDate.getFullYear() && month === currDate.getMonth()){
+//                 day.classlist.add('curr-date')
+//             }
+//         } 
+//         calendar_days.appendChild(day)
+//     }
+// }
+// t7t khdam wa bhalo anare
+let first_day = new Date(year, month, 1)
+
+    for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
+        let day = document.createElement('div')
+        if (i >= first_day.getDay()) {
+            day.classList.add('calendar-day-hover')
+            day.innerHTML = i - first_day.getDay() + 1
+            day.innerHTML += `<span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>`
+            if (i - first_day.getDay() + 1 === currDate.getDate() && year === currDate.getFullYear() && month === currDate.getMonth()) {
+                day.classList.add('curr-date')
+            }
+        }
+        calendar_days.appendChild(day)
     }
+}
+let month_list =calendar.querySelector('.month-list')
+// change month and show it
+month_names.forEach((e,index)=>{
+    let month=document.createElement('div')
+    month.innerHTML=`<div>${e}</div>`
+    month.onclick= ()=>{
+        month_list.classList.remove('show')
+        curr_month.value=index
+        generateCalendar(curr_month.value,curr_year.value)
+    }
+    month_list.appendChild(month)
+})
+document.querySelector("#prev-year").onclick=()=>{
+    --curr_year.value
+    generateCalendar(curr_month.value,curr_year.value)
+}
+document.querySelector("#next-year").onclick=()=>{
+    ++curr_year.value
+    generateCalendar(curr_month.value,curr_year.value)
+}
+
+
+let currDate =new Date()
+let curr_month ={value:currDate.getMonth()}
+let curr_year ={value:currDate.getFullYear()}
+generateCalendar(curr_month.value,curr_year.value)
+
+
 
     // if (!month) month = currDate.getMonth()
     // if (!year) year = currDate.getFullYear()
@@ -46,4 +108,3 @@ generateCalendar = (month, year) => {
     // let curr_month = `${month_names[month]}`
     // month_picker.innerHTML = curr_month
     // calendar_header_year.innerHTML = year
-}
